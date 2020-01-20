@@ -6,7 +6,7 @@
 
 <body>
     <h1>Students</h1>
-    <h3>All Students</h3>
+    <h3>All students</h3>
     <table>
         <tr>
             <th>Naam</th>
@@ -21,6 +21,14 @@
         </tr>
         <% }); %>
     </table>
+    <h3>Add new student</h3>
+    <form action="/add" method="POST">
+        <input type="text" placeholder="username" name="naam">
+        <input type="date" placeholder="geboortedatum" name="geboortedatum">
+        <input type="text" placeholder="studierichting" name="studierichting">
+
+        <button type="submit">Add</button>
+    </form>
 </body>
 
 </html>

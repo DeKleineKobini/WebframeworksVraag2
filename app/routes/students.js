@@ -22,4 +22,29 @@ router.get('/', function (req, res) {
     });
 });
 
+router.post('/add', function (req, res) {
+    getCollection().find({
+        naam: req.body.naam
+    }).toArray((err, data) => {
+        if (!req.body.naam) res.redirect('/');
+        else if (err || data.length) {
+            let reason;
+
+            if (err) reason = err;
+            else if (data.length) reason = "already exists";
+
+            res.render('error', { error: reason });
+        } else {
+            getCollection().insertOne({
+                naam: req.body.naam,
+                geboortedatum: new Date(req.body.geboortedatum),
+                studierichting: req.body.studierichting
+            }, (err, response) => console.log(err, response));
+
+            res.redirect('/');
+        }
+
+    });
+});
+
 module.exports = router;
