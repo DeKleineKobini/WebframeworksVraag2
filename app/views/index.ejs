@@ -6,7 +6,21 @@
 
 <body>
     <h1>Students</h1>
-    <p>Welcome to templating using EJS</p>
+    <h3>All Students</h3>
+    <table>
+        <tr>
+            <th>Naam</th>
+            <th>Geboortedatum</th>
+            <th>Studierichting</th>
+        </tr>
+        <% students.forEach(function(student) { %>
+        <tr>
+            <td><%= student.naam %></td>
+            <td><%= student.geboortedatum.toLocaleDateString() %></td>
+            <td><%= student.studierichting %></td>
+        </tr>
+        <% }); %>
+    </table>
 </body>
 
 </html>
